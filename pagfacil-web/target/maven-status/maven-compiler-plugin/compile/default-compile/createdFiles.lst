@@ -1,0 +1,5 @@
+resource\PagamentoResource.class
+util\JacksonJavaTimeConfiguration.class
+pojo\Pagamento.class
+pojo\Transacao.class
+service\PagamentoService.class

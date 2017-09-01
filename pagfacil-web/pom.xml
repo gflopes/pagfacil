@@ -1,0 +1,57 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>br.gov.caixa</groupId>
+    <artifactId>pagfacil</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>pagfacil-web</artifactId>
+  <packaging>war</packaging>
+  
+  <dependencies>
+      <dependency>
+         <groupId>org.jboss.spec.javax.ws.rs</groupId>
+         <artifactId>jboss-jaxrs-api_1.1_spec</artifactId>
+         <version>1.0.1.Final</version>
+      </dependency>
+      
+		<dependency>	    
+		   <groupId>org.json</groupId>
+	  		<artifactId>json</artifactId>
+			<version>20080701</version>
+		</dependency>
+		
+		<dependency>
+  			<groupId>io.swagger</groupId>
+  			<artifactId>swagger-jaxrs</artifactId>
+  			<version>1.5.7</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr310</artifactId>
+			<version>2.4.1</version>
+		</dependency>
+  </dependencies>
+  
+   <build>
+      <finalName>${project.artifactId}</finalName>
+      <plugins>
+        
+        <plugin>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>${version.war.plugin}</version>
+            <configuration>
+               <!-- Java EE 6 doesn't require web.xml, Maven needs to catch up! -->
+               <failOnMissingWebXml>false</failOnMissingWebXml>
+               <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>  
+		        <archive>  
+			        <manifestEntries>  
+			          <Logging-Profile>sicpu-logger</Logging-Profile>  
+			        </manifestEntries>  
+		    	</archive>
+            </configuration>
+          </plugin>
+		</plugins>
+	</build>
+</project>
